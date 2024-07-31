@@ -18,7 +18,7 @@ export function TaskFilter({ setTasks }) {
         if (!task.complete) task.isHide = true;
         else task.isHide = false;
 
-        return task;
+        return task
       })
     );
     setFilter('completed');
