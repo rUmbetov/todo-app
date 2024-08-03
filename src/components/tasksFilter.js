@@ -1,57 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-export function TaskFilter({ setTasks }) {
-  const [filter, setFilter] = useState('');
-
-  const showAll = () => {
-    setTasks((tasks) =>
-      tasks.map((task) => {
-        task.isHide = false;
-        return task;
-      })
-    );
-    setFilter('all');
-  };
-  const showCompleted = () => {
-    setTasks((tasks) =>
-      tasks.map((task) => {
-        if (!task.complete) task.isHide = true;
-        else task.isHide = false;
-
-        return task;
-      })
-    );
-    setFilter('completed');
-  };
-
-  const showActive = () => {
-    setTasks((tasks) =>
-      tasks.map((task) => {
-        if (task.complete) task.isHide = true;
-        else task.isHide = false;
-
-        return task;
-      })
-    );
-    setFilter('active');
-  };
+// eslint-disable-next-line no-unused-vars
+export function TaskFilter({ tasks, setTasks, filtered, setFiltered }) {
+  function todoFilter(status) {
+    if (status === 'all') {
+      setFiltered([...tasks]);
+    } else {
+      setFiltered([...tasks].filter((todo) => todo.complete === status));
+    }
+  }
 
   return (
     <ul className="filters">
       <li>
-        <button onClick={showAll} className={filter === 'all' ? 'selected' : ''}>
-          All
-        </button>
+        <button onClick={() => todoFilter('all')}>All</button>
       </li>
       <li>
-        <button onClick={showActive} className={filter === 'active' ? 'selected' : ''}>
-          Active
-        </button>
+        <button onClick={() => todoFilter(false)}>Active</button>
       </li>
       <li>
-        <button onClick={showCompleted} className={filter === 'completed' ? 'selected' : ''}>
-          Completed
-        </button>
+        <button onClick={() => todoFilter(true)}>Completed</button>
       </li>
     </ul>
   );

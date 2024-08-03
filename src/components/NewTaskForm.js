@@ -4,7 +4,7 @@ const NewTaskForm = ({ tasks, setTasks }) => {
   const [value, setTaskValue] = useState('');
 
   const addTask = (value) => {
-    if (value) {
+    if (value && value[0] != 0) {
       setTasks([
         ...tasks,
         {
@@ -12,7 +12,6 @@ const NewTaskForm = ({ tasks, setTasks }) => {
           label: value,
           complete: false,
           create: new Date(),
-          isHide: false,
         },
       ]);
     }
