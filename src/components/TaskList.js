@@ -1,10 +1,10 @@
 import Task from './task';
 
-export function TaskList({ filtered, setTasks }) {
+export function TaskList({ tasks, setTasks }) {
   return (
     <ul className="todo-list">
-      {filtered.map((task) => (
-        <Task key={task.id} task={task} filtered={filtered} setTasks={setTasks} />
+      {tasks.map((task) => (
+        <Task key={task.id} task={task} tasks={tasks} setTasks={setTasks} />
       ))}
     </ul>
   );

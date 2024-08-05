@@ -1,6 +1,6 @@
 import TaskFilter from './tasksFilter';
 
-const Footer = ({ tasks, setTasks, filtered, setFiltered }) => {
+const Footer = ({ tasks, setTasks, statusTask, setStatusTask }) => {
   const handClearComplete = () => {
     setTasks(tasks.filter((task) => task.complete !== true));
   };
@@ -8,7 +8,7 @@ const Footer = ({ tasks, setTasks, filtered, setFiltered }) => {
   return (
     <footer className="footer">
       <span className="todo-count">{tasks.filter((task) => !task.complete).length} items left</span>
-      <TaskFilter tasks={tasks} setTasks={setTasks} filtered={filtered} setFiltered={setFiltered} />
+      <TaskFilter statusTask={statusTask} setStatusTask={setStatusTask} />
       <button className="clear-completed" onClick={handClearComplete}>
         Clear completed
       </button>

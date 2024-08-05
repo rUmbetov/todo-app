@@ -1,25 +1,22 @@
 import React from 'react';
 
-// eslint-disable-next-line no-unused-vars
-export function TaskFilter({ tasks, setTasks, filtered, setFiltered }) {
-  function todoFilter(status) {
-    if (status === 'all') {
-      setFiltered([...tasks]);
-    } else {
-      setFiltered([...tasks].filter((todo) => todo.complete === status));
-    }
-  }
-
+export function TaskFilter({ statusTask, setStatusTask }) {
   return (
     <ul className="filters">
       <li>
-        <button onClick={() => todoFilter('all')}>All</button>
+        <button onClick={() => setStatusTask('all')} className={statusTask === 'all' ? 'selected' : ''}>
+          All
+        </button>
       </li>
       <li>
-        <button onClick={() => todoFilter(false)}>Active</button>
+        <button onClick={() => setStatusTask('active')} className={statusTask === 'active' ? 'selected' : ''}>
+          Active
+        </button>
       </li>
       <li>
-        <button onClick={() => todoFilter(true)}>Completed</button>
+        <button onClick={() => setStatusTask('complete')} className={statusTask === 'complete' ? 'selected' : ''}>
+          Completed
+        </button>
       </li>
     </ul>
   );
