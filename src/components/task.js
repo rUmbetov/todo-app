@@ -1,19 +1,6 @@
 import { formatDistanceToNowStrict } from 'date-fns';
 
-export function Task({ task, tasks, setTasks }) {
-  const handComplete = (id) => {
-    //Отметка выполненой задачи
-    setTasks(
-      tasks.map((task) => {
-        if (task.id !== id) return task;
-        return {
-          ...task,
-          complete: !task.complete,
-        };
-      })
-    );
-  };
-
+export function Task({ task, tasks, setTasks, handComplete }) {
   const handRemove = (id) => {
     // Удаление задачи
     setTasks(tasks.filter((task) => task.id !== id));
